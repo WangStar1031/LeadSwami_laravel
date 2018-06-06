@@ -22,12 +22,15 @@ class SubscriptionController extends Controller
 			return redirect('/');
 		}
 		$billingData = UserInfoController::GetBillingDatas($email);
-		$expDate = strtotime($billingData->ExpirationDate);
-		$nextDate = strtotime('+1 days');
-		if( $expDate > $nextDate){
-			$isActive = 1;
-		} else{
-			$isActive = 0;
+		$isActive = 0;
+		if( count($billingData)){
+			$expDate = strtotime($billingData->ExpirationDate);
+			$nextDate = strtotime('+1 days');
+			if( $expDate > $nextDate){
+				$isActive = 1;
+			} else{
+				$isActive = 0;
+			}
 		}
 		return view('subscription', ['email'=>$email, 'isActive'=>$isActive]);
 	}
@@ -43,9 +46,13 @@ class SubscriptionController extends Controller
 			return redirect('/payment');
 		}
 		$status = $request->input('status');
-		$stripe = Stripe::make('sk_test_Zcxay4Kz2nO0FISBUH89Bzc8');
+		$stripeSec = env('STRIPE_SECRET','');
+		$stripe = Stripe::make($stripeSec);
 
 		$billingData = UserInfoController::GetBillingDatas($email);
+		if( count($billingData) == 0){
+			return redirect('/payment');
+		}
 		$curExpDate = strtotime($billingData->ExpirationDate);
 		$curDate = strtotime(date('Y-m-d'));
 		if( $status == 1){

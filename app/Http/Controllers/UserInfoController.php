@@ -20,7 +20,19 @@ class UserInfoController extends Controller
 		DB::update('update users set Location = ?, ProfilePicUrl = ?, PublicUrl = ? where Email = ?',[$Location, $PicUrl, $ProfileUrl, $Email]);
 		return response()->json(['msg'=>'Updated.']);
 	}
+	public static function deleteAccount($email){
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return;
+		}
+		$userId = $user[0]->Id;
+		DB::delete('delete from profiles where UserId = ?', [$userId]);
+		DB::delete('delete from coupons where UserId = ?', [$userId]);
+		DB::delete('delete from billing where UserId = ?', [$userId]);
+		DB::delete('delete from billhistory where UserId = ?', [$userId]);
+		DB::delete('delete from users where Email = ?', [$email]);
 
+	}
 	public static function updateConnectionCount(Request $request){
 		$Email = $request->Email;
 		$ConnectionNumber = (int)str_replace(',', '', $request->ConnectionNumber);
@@ -103,7 +115,17 @@ class UserInfoController extends Controller
 		$userId = $user[0]->Id;
 		$billData = DB::select('select * from billing where UserId = ?', [$userId]);
 		if( count($billData) == 0){
-			return array();
+			$retObj = new \stdClass;
+			$retObj->CompanyName = "";
+			$retObj->TaxVatId = "";
+			$retObj->Country = "";
+			$retObj->ZipCode = "";
+			$retObj->City =  "";
+			$retObj->State = "";
+			$retObj->StripeCardNumber = "";
+			$retObj->ExpirationDate = "";
+			$retObj->PromoCode = "";
+			return $retObj;
 		}
 		return $billData[0];
 	}
@@ -170,7 +192,7 @@ class UserInfoController extends Controller
 		$user = DB::select('select SurName from users where Email = ?', [$email]);
 		return $user[0]->SurName;
 	}
-	public static function loginWithLinkedinUserInfo($_email, $_info){
+	public static function loginWithLinkedinUserInfo($_email, $_info, $picUrl){
 		$users = DB::select('select Id from users where Email = ?', [$_email]);
 		if( count($users))
 			return;
@@ -180,7 +202,7 @@ class UserInfoController extends Controller
 		array_push( $arrInfos, $_email);
 		array_push( $arrInfos, $_info->headline);
 		array_push( $arrInfos, $_info->siteStandardProfileRequest->url);
-		DB::insert('insert into users(Name, SurName, Email, Headline, PublicUrl) values(?,?,?,?,?)', [$_info->firstName,$_info->lastName, $_email, $_info->headline, $_info->siteStandardProfileRequest->url]);
+		DB::insert('insert into users(Name, SurName, Email, Headline, PublicUrl, ProfilePicUrl) values(?,?,?,?,?,?)', [$_info->firstName,$_info->lastName, $_email, $_info->headline, $_info->siteStandardProfileRequest->url, $picUrl]);
 		UserInfoController::SetCouponData0($_email);
 		return;
 	}

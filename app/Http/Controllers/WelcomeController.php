@@ -15,9 +15,9 @@ class WelcomeController extends Controller
 	}
 	public static function getLoginUrl(){
 		$linkedin = new LinkedIn(array(
-			'apiKey' => '817ghsoujbnznd',
-			'apiSecret' => 'QgrxQm1Dsup3D5J9',
-			'callbackUrl' => 'http://mytest.com:8000/dashboard',
+			'apiKey' => env('LINKEDIN_API_KEY', ''),
+			'apiSecret' => env('LINKEDIN_API_SECRET', ''),
+			'callbackUrl' => env('LINKEDIN_CALLBACK_URL',''),
 		));
 		$url = $linkedin->getLoginUrl();
 		return $url;

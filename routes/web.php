@@ -23,8 +23,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::post('/delaccount', 'DashboardController@delAccount');
 Route::get('/payment', 'PaymentController@index');
-Route::post('payment', 'PaymentController@postBillingData');
+Route::post('/payment', 'PaymentController@postBillingData');
 
 Route::get('/subscription', 'SubscriptionController@index');
 Route::post('/subscription', 'SubscriptionController@postPlan');

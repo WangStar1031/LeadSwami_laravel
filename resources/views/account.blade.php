@@ -104,7 +104,8 @@
 	</form>
 	<div class="col-xs-11 noteContents">
 		Please Note: If you delete your account all your information and subscription will be permanently deleted, and your data collected will no longer be available.
-		<form class="DelAcount">
+		<form class="DelAcount" method="post" action="/delaccount">
+			{{ csrf_field() }}
 			<input type="submit" name="submit" value="Delete account">
 		</form>
 	</div>
