@@ -18,6 +18,8 @@ class PaymentController extends Controller
 		return view('payment', ['email'=>$email, 'billData'=>$billData, 'billHistory'=>$billHistory]);
 	}
 	public function postBillingData(Request $request){
+		// print_r($request->input('payCode'));
+		// return;
 		$email = "";
 		if( $request->session()->has('LeadswamiAdmin')){
 			$email = $request->session()->get('LeadswamiAdmin');

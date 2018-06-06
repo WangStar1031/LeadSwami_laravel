@@ -4,7 +4,7 @@
 	.payDetails h2, .payMethod h2, .payMethod h2, .billHistory h2{ margin-bottom: 50px; }
 	.payContents label{ margin-top: 20px; color: #989898; }
 	.payContents input[type='text']{ border: none; border-bottom: 1px solid #989898; width: 80%; padding-left: 10px; }
-	.payContents input[type='submit'], .btnEdit{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
+	.payContents input[type='submit'], .btnEdit, .btnDelCard{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
 	input:focus{ outline: none; }
 	.promoCode, .billHistory{ border-top: 1px solid #989898; margin-top: 30px; color: #989898; }
 	.DelAcount input{ background-color: #f3f7fa !important; color: black!important; }
@@ -13,12 +13,12 @@
 	.payMethod table td{ padding: 10px; color: #989898; }
 	.fa-check-circle-o{ color: green; }
 	.billHistory table{ width: 100%; }
-	.btnEdit{ margin-left: 15px; margin-right: 10px; background-color: #bec3c7!important; width: 5em; float: left; cursor: pointer; }
-	input[name="delCard"]{ background-color: #f75c4a!important; }
+	.btnEdit{ margin-left: 15px; margin-right: 20px; background-color: #bec3c7!important; width: 5em; float: left; cursor: pointer; }
+	.btnDelCard{ background-color: #f75c4a!important; width: 10em; cursor: pointer;}
 	input[name="submitApply"]{ background-color: #e6eaed!important; color: #b7bbbe!important; }
 </style>
 <div class="payContents row">
-	<form class="payDetails col-xs-12" method="post">
+	<form class="payDetails col-xs-12" method="post" id="payDetails">
 		{{ csrf_field() }}
 		<div class="payLeft col-xs-5">
 			<h2>Billing Details</h2>
@@ -72,11 +72,11 @@
 			</div>
 			<div class="col-xs-12">
 				<div class="btnEdit" onclick="btnEditClicked()">EDIT</div>
-				<input type="submit" name="delCard" value="DELETE CARD">
+				<div class="btnDelCard" onclick="btnDelCardClicked()">DELETE CARD</div>
 			</div>
 		</div>
 		<div class="col-xs-12">
-			<input type="submit" name="submit" value="SAVE">
+			<input type="submit" value="SAVE">
 		</div>
 	</form>
 	<div class="col-xs-11 promoCode">
@@ -139,5 +139,11 @@
 	}
 	function payCodeEditing() {
 		$("input[name='payCode']").val($("#payCode").val().replace(/ /g, ''));
+	}
+	function btnDelCardClicked(){
+		$("#payCode").val("");
+		$("input[name='payCode']").val("");
+		// $("#payDetails").submit();
+		document.getElementById("payDetails").submit();
 	}
 </script>
