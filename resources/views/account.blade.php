@@ -1,68 +1,23 @@
 <style type="text/css">
-	.accContents{
-		position: absolute;
-		top: 80px;
-		margin-left: 100px;
-		padding: 30px;
-		color: black;
-		font-size: 15px;
-		width: calc( 100% - 100px);
-	}
-	.accDetails img{
-		width: 100px;
-		border-radius: 100%;
-		margin-bottom: 50px;
-	}
-	.accDetails h2, .passInfo h2{
-		margin-bottom: 50px
-	}
-	.accContents label{
-		margin-top: 20px;
-		color: #989898;
-	}
-	.accContents input[type='text'], .passInfo input[type='password']{
-		border: none;
-		border-bottom: 1px solid #989898;
-		width: 80%;
-		padding-left: 10px;
-	}
-	.accContents input[type='submit']{
-		margin-top: 20px;
-		background-color: #4da2ff;
-		border: none;
-		border-radius: 5px;
-		padding: 10px 20px 10px 20px;
-		color: white;
-	}
-	input:focus{
-		outline: none;
-	}
-	.noteContents{
-		border-top: 1px solid #989898;
-		margin-top: 30px;
-		padding-top: 20px;
-		color: #989898;
-	}
-	.DelAcount input{
-		background-color: #f3f7fa !important;
-		color: black!important;
-	}
-	.HideItem {
-		display: none;
-	}
-	.passInfo i{
-		margin-right: 10px;
-	}
-	.passInfo table td{
-		padding: 10px;
-		color: #989898;
-	}
-	.fa-check-circle-o{
-		color: green;
-	}
+	.accContents{ position: absolute; top: 80px; margin-left: 100px; padding: 30px; color: black; font-size: 15px; width: calc( 100% - 100px); }
+	.accDetails img{ width: 100px; border-radius: 100%; margin-bottom: 50px; }
+	.accDetails h2, .passInfo h2{ margin-bottom: 50px }
+	.accContents label{ margin-top: 20px; color: #989898; }
+	.accContents input[type='text'], .passInfo input[type='password']{ border: none; border-bottom: 1px solid #989898; width: 80%; padding-left: 10px; }
+	.accContents input[type='submit']{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; }
+	input:focus{ outline: none; }
+	.noteContents{ border-top: 1px solid #989898; margin-top: 30px; padding-top: 20px; color: #989898; }
+	.DelAcount input{ background-color: #f3f7fa !important; color: black!important; }
+	.HideItem { display: none; }
+	.passInfo i{ margin-right: 10px; }
+	.passInfo table td{ padding: 10px; color: #989898; }
+	.fa-check-circle-o{ color: green; }
+	.sucessMsg{ color: green; }
+	.wrongMsg, .noMatchingMsg{ color: red; }
 </style>
 <div class="accContents row">
-	<form class="accDetails col-xs-5">
+	<form class="accDetails col-xs-5" method="post" action="/dashboard">
+		{{ csrf_field() }}
 		<h2>Account Details</h2>
 		<p>Avatar</p>
 		<img src="@php echo (App\Http\Controllers\UserInfoController::getUserAvatar($email) == '' ? 'img/avatar.png' : App\Http\Controllers\UserInfoController::getUserAvatar($email));@endphp"><br/>
@@ -77,10 +32,17 @@
 		<br/>
 		<input type="submit" name="submit" value="SAVE">
 	</form>
-	<form class="passInfo col-xs-6">
+	<form class="passInfo col-xs-6" method="post" action="/changePassword">
+		{{ csrf_field() }}
 		<h2>Change password</h2>
+
+		<p class="sucessMsg @php echo ($matching == 'changed' ? '' : 'HideItem');@endphp">Successfully changed!</p>
+		<p class="wrongMsg @php echo ($matching == 'curPass' ? '' : 'HideItem');@endphp">Wrong password!</p>
+		<p class="noMatchingMsg @php echo ($matching == 'Not Matching' ? '' : 'HideItem');@endphp">Not matching password!</p>
+
 		<label>Current password</label><br/>
 		<input type="password" name="curPassword"><br/>
+		<a href="/forgotPassword">forgotPassword</a><br/>
 		<label>New password</label><br/>
 		<input type="password" name="newPassword" onkeyup="NewPassChange()"><br/>
 		<p>

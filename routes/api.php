@@ -19,3 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/PersonalData/', 'UserInfoController@insertPersonalData');
 Route::post('/ConnectionCount/', 'UserInfoController@updateConnectionCount');
 Route::post('/SaveProfiles/', 'UserInfoController@SaveProfiles');
+
+Route::get('/PersonalData/', 'UserInfoController@insertPersonalData');
+Route::get('/ConnectionCount/', 'UserInfoController@updateConnectionCount');
+Route::get('/SaveProfiles/', 'UserInfoController@SaveProfiles');
+
+Route::get('/authZapier/', 'UserInfoController@verifyFromZapier');

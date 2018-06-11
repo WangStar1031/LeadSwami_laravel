@@ -23,6 +23,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::post('/dashboard', 'DashboardController@changeName');
+
+Route::get('/forgotPassword', 'DashboardController@forgotPassword');
+
 Route::post('/delaccount', 'DashboardController@delAccount');
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment', 'PaymentController@postBillingData');
@@ -34,3 +38,5 @@ Route::get('/profiles', 'ProfilesController@index');
 Route::get('/logout', 'LogoutController@index');
 
 Route::post('/savePromoCode', 'PaymentController@postPromoCode');
+
+Route::post('/changePassword', 'DashboardController@changePassword');

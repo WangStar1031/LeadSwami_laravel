@@ -21,6 +21,6 @@
 	<body>
 		@include('topbar', ['email'=>$email])
 		@include('sidebar', ['active' => 'account', 'email'=>$email])
-		@include('account', ['email'=>$email])
+		@include('account', ['email'=>$email, 'matching'=>$matching])
 	</body>
 </html> 

@@ -8,6 +8,13 @@ use DB;
 
 class UserInfoController extends Controller
 {
+	public static function verifyFromZapier(Request $request){
+		$avatar = '';
+		$email = $request->input('email');
+		if( $email)
+			$avatar = UserInfoController::getUserAvatar( $email);
+		return view('authZapier', ['email'=>$email, 'avatar'=>$avatar]);
+	}
 	public static function insertPersonalData(Request $request){
 		$Email = $request->Email;
 		$ProfileUrl = $request->ProfileUrl;
@@ -20,19 +27,6 @@ class UserInfoController extends Controller
 		DB::update('update users set Location = ?, ProfilePicUrl = ?, PublicUrl = ? where Email = ?',[$Location, $PicUrl, $ProfileUrl, $Email]);
 		return response()->json(['msg'=>'Updated.']);
 	}
-	public static function deleteAccount($email){
-		$user = DB::select('select Id from users where Email = ?', [$email]);
-		if( count($user) == 0){
-			return;
-		}
-		$userId = $user[0]->Id;
-		DB::delete('delete from profiles where UserId = ?', [$userId]);
-		DB::delete('delete from coupons where UserId = ?', [$userId]);
-		DB::delete('delete from billing where UserId = ?', [$userId]);
-		DB::delete('delete from billhistory where UserId = ?', [$userId]);
-		DB::delete('delete from users where Email = ?', [$email]);
-
-	}
 	public static function updateConnectionCount(Request $request){
 		$Email = $request->Email;
 		$ConnectionNumber = (int)str_replace(',', '', $request->ConnectionNumber);
@@ -43,7 +37,6 @@ class UserInfoController extends Controller
 		DB::update('update users set ConnectionCount = ? where Email = ?',[$ConnectionNumber, $Email]);
 		return response()->json(['msg'=>'Updated.']);
 	}
-
 	public static function SaveProfiles(Request $request){
 		$Email = $request->Email;
 		$user = DB::select('select Id from users where Email = ?', [$Email]);
@@ -73,6 +66,21 @@ class UserInfoController extends Controller
 			return response()->json(['msg'=>'Inserted.']);
 		}
 		return response()->json(['msg'=>'Coupon Count Limited.']);
+	}
+
+
+	public static function deleteAccount($email){
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return;
+		}
+		$userId = $user[0]->Id;
+		DB::delete('delete from profiles where UserId = ?', [$userId]);
+		DB::delete('delete from coupons where UserId = ?', [$userId]);
+		DB::delete('delete from billing where UserId = ?', [$userId]);
+		DB::delete('delete from billhistory where UserId = ?', [$userId]);
+		DB::delete('delete from users where Email = ?', [$email]);
+
 	}
 
 	public static function getProfileData($email){
@@ -192,18 +200,44 @@ class UserInfoController extends Controller
 		$user = DB::select('select SurName from users where Email = ?', [$email]);
 		return $user[0]->SurName;
 	}
+	public static function my_simple_crypt( $string, $action = 'e' ) {
+		// you may change these values to your own
+		$secret_key = 'my_simple_secret_key';
+		$secret_iv = 'my_simple_secret_iv';
+
+		$output = false;
+		$encrypt_method = "AES-256-CBC";
+		$key = hash( 'sha256', $secret_key );
+		$iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
+
+		if( $action == 'e' ) {
+			$output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
+		}
+		else if( $action == 'd' ){
+			$output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
+		}
+
+		return $output;
+	}
 	public static function loginWithLinkedinUserInfo($_email, $_info, $picUrl){
 		$users = DB::select('select Id from users where Email = ?', [$_email]);
 		if( count($users))
-			return;
+			return '';
 		$arrInfos = array();
 		array_push( $arrInfos, $_info->firstName);
 		array_push( $arrInfos, $_info->lastName);
 		array_push( $arrInfos, $_email);
 		array_push( $arrInfos, $_info->headline);
 		array_push( $arrInfos, $_info->siteStandardProfileRequest->url);
-		DB::insert('insert into users(Name, SurName, Email, Headline, PublicUrl, ProfilePicUrl) values(?,?,?,?,?,?)', [$_info->firstName,$_info->lastName, $_email, $_info->headline, $_info->siteStandardProfileRequest->url, $picUrl]);
+		$planText = $_email;// . $_info->firstName . $_info->lastName;
+		$password =  UserInfoController::my_simple_crypt( $planText, 'e' );
+		DB::insert('insert into users(Name, SurName, Email, Headline, PublicUrl, ProfilePicUrl, Password) values(?,?,?,?,?,?,?)', [$_info->firstName,$_info->lastName, $_email, $_info->headline, $_info->siteStandardProfileRequest->url, $picUrl, $password]);
 		UserInfoController::SetCouponData0($_email);
+		return $password;
+		// Mail::raw('Text to e-mail', function($message){
+		// 	$message->from('me@example.com', 'Welcome to Leadswami!');
+		// 	$message->to('wangstar1031@hotmail.com');
+		// });
 		return;
 	}
 	public static function SetCouponData0($email){
@@ -263,5 +297,28 @@ class UserInfoController extends Controller
 		}
 		DB::update('update coupons set LastPendingDate = ?, RemainingCount = ? where UserId = ?', [$curPending->format('Y-m-d'), $count-1, $userId]);
 		return true;
+	}
+	public static function matchingPassword($email, $pass){
+		$user = DB::select('select * from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return false;
+		}
+		if( strcmp($user[0]->Password, $pass) == 0){
+			return true;
+		}
+		return false;
+	}
+	public static function changePassword($email, $pass){
+		DB::update('update users set Password = ? where Email = ?', [$pass, $email]);
+	}
+	public static function updateUserName($email, $firstName, $lastName){
+		DB::update('update users set Name = ?, SurName = ? where Email = ?', [$firstName, $lastName, $email]);
+	}
+	public static function getUserPassword($email){
+		$user = DB::select('select Password from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return '';
+		}
+		return $user[0]->Password;
 	}
 }

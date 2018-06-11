@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,6 +55,10 @@ return [
     |
     */
 
+    // 'from' => [
+    //     'address' => 'williamdeluna2018@gmail.com',
+    //     'name' => 'Will deluna',
+    // ],
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
@@ -99,7 +103,8 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
+    // 'sendmail' => '/usr/sbin/sendmail -bs',
+    'sendmail' => '\"D:\xampp\sendmail\sendmail.exe\" -t',
 
     /*
     |--------------------------------------------------------------------------
