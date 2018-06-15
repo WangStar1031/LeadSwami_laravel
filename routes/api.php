@@ -25,3 +25,11 @@ Route::get('/ConnectionCount/', 'UserInfoController@updateConnectionCount');
 Route::get('/SaveProfiles/', 'UserInfoController@SaveProfiles');
 
 Route::get('/authZapier/', 'UserInfoController@verifyFromZapier');
+Route::get('/accessZapier/', 'UserInfoController@accessFromZapier');
+
+Route::post('/accessZapier/', 'UserInfoController@accessFromZapier');
+
+Route::post('/oauthZapier/submit', 'UserInfoController@oauthZapierSubmit');
+Route::get('/user','UserInfoController@getUserInfo');
+
+Route::get('/newProfile', 'UserInfoController@GetProfileDataFromZapier');

@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */

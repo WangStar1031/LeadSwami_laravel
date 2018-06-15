@@ -13,30 +13,34 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
 
-Route::get('/', 'WelcomeController@index');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::group(['middleware' => 'use.ssl'], function(){
+	Route::get('/', 'WelcomeController@index');
+	// Route::get('/', function () {
+	//     return view('welcome');
+	// });
 
-Auth::routes();
+	Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::post('/dashboard', 'DashboardController@changeName');
+	Route::get('/dashboard', 'DashboardController@index');
+	Route::post('/dashboard', 'DashboardController@changeName');
 
-Route::get('/forgotPassword', 'DashboardController@forgotPassword');
+	Route::get('/forgotPassword', 'DashboardController@forgotPassword');
 
-Route::post('/delaccount', 'DashboardController@delAccount');
-Route::get('/payment', 'PaymentController@index');
-Route::post('/payment', 'PaymentController@postBillingData');
+	Route::post('/delaccount', 'DashboardController@delAccount');
+	Route::get('/payment', 'PaymentController@index');
+	Route::post('/payment', 'PaymentController@postBillingData');
 
-Route::get('/subscription', 'SubscriptionController@index');
-Route::post('/subscription', 'SubscriptionController@postPlan');
+	Route::get('/subscription', 'SubscriptionController@index');
+	Route::post('/subscription', 'SubscriptionController@postPlan');
 
-Route::get('/profiles', 'ProfilesController@index');
-Route::get('/logout', 'LogoutController@index');
+	Route::get('/profiles', 'ProfilesController@index');
+	Route::get('/logout', 'LogoutController@index');
 
-Route::post('/savePromoCode', 'PaymentController@postPromoCode');
+	Route::post('/savePromoCode', 'PaymentController@postPromoCode');
 
-Route::post('/changePassword', 'DashboardController@changePassword');
+	Route::post('/changePassword', 'DashboardController@changePassword');
+
+	Route::post('/oauthZapier/submit', 'UserInfoController@oauthZapierSubmit');
+});

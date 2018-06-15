@@ -27,8 +27,9 @@
         	.infoEdit input{ color: black; width: 100%; }
         	.infoEdit p{ text-align: left; margin-left: 15px; margin-top: 10px;}
         	.bottomContents{ padding: 15px 0px 10px 0px; font-weight: bold; color: gray;}
-        	input[type='submit']{ float: left; text-align: left; border: none; color: gray; padding: 8px 12px 8px 12px; font-weight: bold; font-size: 1.2em; margin-top: 12px; margin-right: 10px; border-radius: 5px;}
+        	input[type='submit'], .btnCancel{ float: left; text-align: left; border: none; color: gray; padding: 8px 12px 8px 12px; font-weight: bold; font-size: 1.2em; margin-top: 12px; margin-right: 10px; border-radius: 5px;}
         	.btnAllow{ background-color: #0682ca; color: white!important;}
+        	input{ color: black!important; }
         </style>
     </head>
 	<body>
@@ -57,7 +58,8 @@
 				</ul>
 				<p>Zapier's terms apply. You can change this anytime from your settings.</p>
 			</div>
-			<form class="col-xs-12 SignForm">
+			<form class="col-xs-12 SignForm" action="/api/oauthZapier/submit" method="post">
+				{{ csrf_field() }}
 				<h3>Sign in to Leadswamiand allow access:</h3>
 				<div class="col-xs-12 infoEdit">
 					<div class="col-xs-6">
@@ -72,9 +74,13 @@
 				<div class="col-xs-12">
 					<div class="col-xs-12">
 						<input type="submit" name="btnAllow" value="Allow access" class="btnAllow">
-						<input type="submit" name="btnCancel" value="Cancel">
+						<a href="@php echo $redirect_uri.'?error=access_denied&errordescription=the user denied your request';@endphp" class="btnCancel">Cancel</a>
+						<!-- <input type="submit" name="btnCancel" value="Cancel"> -->
 					</div>
 				</div>
+				<input type="hidden" name="client_id" value="@php echo $client_id;@endphp">
+				<input type="hidden" name="redirect_uri" value="@php echo $redirect_uri;@endphp">
+				<input type="hidden" name="state" value="@php echo $state;@endphp">
 			</form>
 			<div class="col-xs-12 bottomContents">
 				<p>Terms of Service | Privacy Policy</p>
