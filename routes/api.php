@@ -24,12 +24,12 @@ Route::get('/PersonalData/', 'UserInfoController@insertPersonalData');
 Route::get('/ConnectionCount/', 'UserInfoController@updateConnectionCount');
 Route::get('/SaveProfiles/', 'UserInfoController@SaveProfiles');
 
-Route::get('/authZapier/', 'UserInfoController@verifyFromZapier');
-Route::get('/accessZapier/', 'UserInfoController@accessFromZapier');
+Route::get('/authZapier/', 'ZapierController@verifyFromZapier');
+Route::get('/accessZapier/', 'ZapierController@accessFromZapier');
 
-Route::post('/accessZapier/', 'UserInfoController@accessFromZapier');
+Route::post('/accessZapier/', 'ZapierController@accessFromZapier');
 
-Route::post('/oauthZapier/submit', 'UserInfoController@oauthZapierSubmit');
-Route::get('/user','UserInfoController@getUserInfo');
+Route::post('/oauthZapier/submit', 'ZapierController@oauthZapierSubmit');
+Route::get('/user','ZapierController@getUserInfo');
 
-Route::get('/newProfile', 'UserInfoController@GetProfileDataFromZapier');
+Route::get('/newProfiles', 'TriggerController@GetProfileDataFromZapier');

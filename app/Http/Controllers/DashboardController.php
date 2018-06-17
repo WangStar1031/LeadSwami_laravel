@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Classes\LinkedIn;
-use Mail;
+use App\Classes\Mailin;
+// use Mail;
+// use Illuminate\Mail\TestEmail;
 
 class DashboardController extends Controller
 {
@@ -31,11 +33,25 @@ class DashboardController extends Controller
 			$request->session()->put('LeadswamiAdmin', $emailObj->emailAddress);
 			$email = $emailObj->emailAddress;
 
-			$data = ['pass'=>$password];
-			Mail::send('emails.welcome', $data, function($message) use ($email){
-				$message->to($email, '')->subject('Welcome to Leadswami!');
-				$message->from('info@leadswami.com','Leadswami');
-			});
+			// $data = ['pass' => $password];
+			// Mail::to( $email)->send(new TestEmail($data));
+
+			// $data = ['pass'=>$password];
+			
+			$mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
+			$mailin->
+				addTo($email, '')->
+				setFrom('info@leadswami.com', 'Leadswami')->
+				// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
+				setSubject('Welcome to Leadswami!')->
+				setText('This is your password.')->
+				setHtml('<strong>' . $password . '</strong>');
+			$res = $mailin->send();
+			
+			// Mail::send('emails.welcome', $data, function($message) use ($email){
+			// 	$message->to($email, '')->subject('Welcome to Leadswami!');
+			// 	$message->from('info@leadswami.com','Leadswami');
+			// });
 		} else{
 			return redirect('/');
 		}
@@ -48,11 +64,19 @@ class DashboardController extends Controller
 			return redirect('/');
 		}
 		$pass = UserInfoController::getUserPassword($email);
-		$data = ['pass'=>$pass];
-		Mail::send('emails.welcome', $data, function($message) use ($email){
-			$message->to($email, '')->subject('Welcome to Leadswami!');
-			$message->from('info@leadswami.com','Leadswami');
-		});
+
+		// $data = ['pass' => $pass];
+		// Mail::to( $email)->send(new TestEmail($data));
+			
+		$mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
+		$mailin->
+			addTo($email, '')->
+			setFrom('info@leadswami.com', 'Leadswami')->
+			// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
+			setSubject('Welcome to Leadswami!')->
+			setText('This is your password.')->
+			setHtml('<strong>' . $pass . '</strong>');
+		$res = $mailin->send();		
 		return redirect('/dashboard');
 	}
 	public function delAccount(Request $request){
@@ -85,6 +109,17 @@ class DashboardController extends Controller
 			return view('dashboard', ['email'=>$email, 'matching'=>'Not Matching']);
 		}
 		UserInfoController::changePassword($email, $newPass);
+		// $mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
+		// $mailin->
+		// 	addTo($email, '')->
+		// 	setFrom('info@leadswami.com', 'Leadswami')->
+		// 	// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
+		// 	setSubject('Welcome to Leadswami!')->
+		// 	setText('This is your password.')->
+		// 	setHtml('<strong>' . $newPass . '</strong>');
+		// $res = $mailin->send();
+		// print_r($res);
+
 		return view('dashboard', ['email'=>$email, 'matching'=>'changed']);
 	}
 	public function changeName(Request $request){
