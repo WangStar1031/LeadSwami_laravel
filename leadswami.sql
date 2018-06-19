@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.26-MariaDB)
-# Date: 2018-06-04 17:32:00
+# Date: 2018-06-20 07:43:00
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -16,7 +16,7 @@ CREATE TABLE `billhistory` (
   `Amount` double DEFAULT NULL,
   `ExpDate` date DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 #
 # Structure for table "billing"
@@ -36,7 +36,7 @@ CREATE TABLE `billing` (
   `ExpirationDate` date DEFAULT NULL,
   `PromoCode` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 #
 # Structure for table "coupons"
@@ -49,7 +49,7 @@ CREATE TABLE `coupons` (
   `LastPendingDate` date DEFAULT NULL,
   `RemainingCount` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 #
 # Structure for table "profiles"
@@ -71,8 +71,9 @@ CREATE TABLE `profiles` (
   `Twitter` varchar(255) DEFAULT NULL,
   `Site` varchar(255) DEFAULT NULL,
   `Tag` varchar(255) DEFAULT NULL,
+  `ZapTag` tinyint(3) DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Structure for table "users"
@@ -85,7 +86,7 @@ CREATE TABLE `users` (
   `SurName` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
-  `RndPass` varchar(255) DEFAULT NULL,
+  `AccessTocken` varchar(255) DEFAULT NULL,
   `Industry` varchar(255) DEFAULT NULL,
   `Headline` varchar(255) DEFAULT NULL,
   `Location` varchar(255) DEFAULT NULL,
@@ -94,4 +95,4 @@ CREATE TABLE `users` (
   `ConnectionCount` int(10) DEFAULT NULL,
   `Position` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
