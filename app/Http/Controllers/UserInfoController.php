@@ -216,7 +216,7 @@ class UserInfoController extends Controller
 	public static function loginWithLinkedinUserInfo($_email, $_info, $picUrl){
 		$users = DB::select('select * from users where Email = ?', [$_email]);
 		if( count($users))
-			return $users[0]->Password;
+			return '';
 		$arrInfos = array();
 		array_push( $arrInfos, $_info->firstName);
 		array_push( $arrInfos, $_info->lastName);
