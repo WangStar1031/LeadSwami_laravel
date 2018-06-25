@@ -1,0 +1,17 @@
+$mainColor : #989898;
+
+.accContents{ position: absolute; top: 80px; margin-left: 100px; padding: 30px; color: black; font-size: 15px; width: calc( 100% - 100px); }
+.accDetails img{ width: 100px; border-radius: 100%; margin-bottom: 50px; }
+.accDetails h2, .passInfo h2{ margin-bottom: 50px }
+.accContents label{ margin-top: 20px; color: $mainColor; }
+.accContents input[type='text'], .passInfo input[type='password']{ border: none; border-bottom: 1px solid $mainColor; width: 80%; padding-left: 10px; }
+.accContents input[type='submit']{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; }
+input:focus{ outline: none; }
+.noteContents{ border-top: 1px solid $mainColor; margin-top: 30px; padding-top: 20px; color: $mainColor; }
+.DelAcount input{ background-color: #f3f7fa !important; color: black!important; }
+.HideItem { display: none; }
+.passInfo i{ margin-right: 10px; }
+.passInfo table td{ padding: 10px; color: $mainColor; }
+.fa-check-circle-o{ color: green; }
+.sucessMsg{ color: green; }
+.wrongMsg, .noMatchingMsg{ color: red; }

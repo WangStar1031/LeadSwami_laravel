@@ -1,44 +1,5 @@
-<style type="text/css">
-	.profileContents{
-		position: absolute;
-		top: 80px;
-		left: 100px;
-		padding: 30px;
-		color: black;
-		font-size: 15px;
-		width: calc( 100% - 100px);
-		height: calc(100% - 80px);
-		overflow: auto;
-		z-index: -1;
-	}
-	.profileContents img{
-		width: 40px;
-		border-radius: 100%;
-	}
-	.proTable{
-		margin-top: 20px;
-		border: 1px solid #ddd;
-	}
-	.proTable th{
-		font-weight: bold;
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-	.proTable tbody tr:nth-child(odd){
-		background-color: #ddd;
-	}
-	.proTable td{
-		padding: 5px;
-	}
-	.img-responsive{
-		margin: auto;
-		border-radius: 100%;
-	}
-	.proTable img{
-		cursor: pointer;
-	}
-</style>
-<div class="profileContents col-xs-12">
+
+<div class="profileContents">
 	<h2>Profile</h2>
 	<table class="proTable col-xs-12">
 		<thead>
@@ -93,21 +54,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	function ImgOnClick(_this){
-		var strUrl = _this.getAttribute('src');
-		$(".img-responsive").attr('src', strUrl);
-	}
-	function centerModal() {
-		$(this).css('display', 'block');
-		var $dialog = $(this).find(".modal-dialog");
-		var offset = ($(window).height() - $dialog.height()) / 2;
-		// Center modal vertically in window
-		$dialog.css("margin-top", offset);
-	}
-
-	$('.modal').on('show.bs.modal', centerModal);
-	$(window).on("resize", function () {
-		$('.modal:visible').each(centerModal);
-	});
-</script>
+<script src='js/all.js'></script>

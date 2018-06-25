@@ -1,0 +1,39 @@
+
+.profileContents{
+	position: absolute;
+	top: 80px;
+	left: 100px;
+	padding: 30px;
+	color: black;
+	font-size: 15px;
+	width: calc( 100% - 100px);
+	height: calc(100% - 80px);
+	overflow: auto;
+
+	img{
+		width: 40px;
+		border-radius: 100%;
+	}
+	.proTable{
+		margin-top: 20px;
+		border: 1px solid #ddd;
+	}
+	.proTable th{
+		font-weight: bold;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.proTable tbody tr:nth-child(odd){
+		background-color: #ddd;
+	}
+	.proTable td{
+		padding: 5px;
+	}
+	.proTable img{
+		cursor: pointer;
+	}
+}
+.img-responsive{
+	margin: auto;
+	border-radius: 100%;
+}

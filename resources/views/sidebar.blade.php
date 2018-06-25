@@ -1,35 +1,3 @@
-<style type="text/css">
-	.sideBar{
-		height: calc(100% - 80px);
-		width: 100px;
-		background-color: #2c2e3e;
-		color: white;
-		position: fixed;
-		top: 80px;
-		z-index: 100;
-	}
-	.sideOptions{
-		position: relative;
-		text-align: center;
-	}
-	.sideOptions a{
-		text-decoration: none;
-		color: white;
-		height: 40px;
-	}
-	.sideOptions img{
-		margin-right: 10px;
-	}
-	.sideOption p{
-		margin: 0px;
-	}
-	.sideOption{
-		padding: 10px;
-	}
-	.selectedOption{
-		background-color: #5f9eff;
-	}
-</style>
 <div class="sideBar">
 	<div class="sideOptions">
 		<div class="sideOption @php echo $active == 'account' ? 'selectedOption' : '' @endphp">
