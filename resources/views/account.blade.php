@@ -30,15 +30,15 @@
 		<input type="password" name="newPassword" onkeyup="NewPassChange()"><br/>
 		<p>
 			<table>
-				<tr>
+				<tr style="display: none;">
 					<td class="LowerCaseTd"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>One lowercase charactor</td>
 					<td class="SpecChrTd"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>One special charactor</td>
 				</tr>
 				<tr>
-					<td class="UpperCaseTd"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>One uppercase charactor</td>
+					<td class="UpperCaseTd" style="display: none;"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>One uppercase charactor</td>
 					<td class="StrLenCaseTd"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>8 charactors minimum</td>
 				</tr>
-				<tr>
+				<tr style="display: none;">
 					<td class="NumberCaseTd"><i class="fa fa-check-circle-o HideItem"></i><i class="fa fa-dot-circle-o"></i>One number</td>
 				</tr>
 			</table>

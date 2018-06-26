@@ -61,7 +61,7 @@
 			<input type="submit" value="SAVE">
 		</div>
 	</form>
-	<div class="col-xs-11 promoCode">
+	<div class="col-xs-11 promoCode" style="display: none;">
 		<h2>Promo Code</h2>
 		<p>If you have a promo code, please enter it below to receive your credit</p>
 		<form class="col-xs-7" method="post" action="/savePromoCode">

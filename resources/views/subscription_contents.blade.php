@@ -3,7 +3,7 @@
 	<div class="subMain">
 		<form class="planOption" method="post">
 			{{ csrf_field() }}
-			<p>
+			<p  style="display: none;">
 				<span>Monthly</span>
 				<span class="planRadio"></span>
 				<span>
