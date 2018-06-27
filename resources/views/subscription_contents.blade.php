@@ -15,7 +15,7 @@
 					<span class="HighLight">(Best Value)</span>
 				</span>
 			</p>
-			<div class="planPans row">
+			<div class="planPans">
 				<div class="col-lg-3 col-md-1"></div>
 				<div class="col-lg-6 col-md-10">
 					<div class="basicPan col-xs-6">

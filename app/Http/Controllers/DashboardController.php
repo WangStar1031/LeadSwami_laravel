@@ -17,9 +17,9 @@ class DashboardController extends Controller
 			$email = $request->session()->get('LeadswamiAdmin');
 		} else if( $code != ''){
 			$linkedin = new LinkedIn(array(
-				'apiKey' => env('LINKEDIN_API_KEY', '817ghsoujbnznd'),
-				'apiSecret' => env('LINKEDIN_API_SECRET', 'QgrxQm1Dsup3D5J9'),
-				'callbackUrl' => env('LINKEDIN_CALLBACK_URL','http://mytest.com:8000/dashboard'),
+				'apiKey' => env('LINKEDIN_API_KEY', ''),
+				'apiSecret' => env('LINKEDIN_API_SECRET', ''),
+				'callbackUrl' => env('LINKEDIN_CALLBACK_URL',''),
 			));
 			$token = $linkedin->getAccessToken($code);
 			$linkedin->setAccessToken($token);
@@ -33,11 +33,13 @@ class DashboardController extends Controller
 			$request->session()->put('LeadswamiAdmin', $emailObj->emailAddress);
 			$email = $emailObj->emailAddress;
 			if( $password != ''){
-				$mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
+				$mailinMail = env('MAILIN_MAIL_MAIL', '');
+				$mailinKey = env('MAILIN_SEC_KEY');
+				$mailin = new Mailin($mailinMail, $mailinKey);
+				$serverMail = env('SERVER_MAIL', '');
 				$mailin->
 					addTo($email, '')->
-					setFrom('info@leadswami.com', 'Leadswami')->
-					// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
+					setFrom($serverMail, 'Leadswami')->
 					setSubject('Welcome to Leadswami!')->
 					setText('This is your password.')->
 					setHtml('<strong>' . $password . '</strong>');
@@ -56,13 +58,13 @@ class DashboardController extends Controller
 		}
 		$pass = UserInfoController::getUserPassword($email);
 
-		// $data = ['pass' => $pass];
-		// Mail::to( $email)->send(new TestEmail($data));
-			
-		$mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
+		$mailinMail = env('MAILIN_MAIL_MAIL', '');
+		$mailinKey = env('MAILIN_SEC_KEY');
+		$mailin = new Mailin($mailinMail, $mailinKey);
+		$serverMail = env('SERVER_MAIL', '');
 		$mailin->
 			addTo($email, '')->
-			setFrom('info@leadswami.com', 'Leadswami')->
+			setFrom($serverMail, 'Leadswami')->
 			// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
 			setSubject('Welcome to Leadswami!')->
 			setText('This is your password.')->
@@ -100,16 +102,6 @@ class DashboardController extends Controller
 			return view('dashboard', ['email'=>$email, 'matching'=>'Not Matching']);
 		}
 		UserInfoController::changePassword($email, $newPass);
-		// $mailin = new Mailin('wangstar1031@hotmail.com', 'xdTA7E5NY8IKpUgJ');
-		// $mailin->
-		// 	addTo($email, '')->
-		// 	setFrom('info@leadswami.com', 'Leadswami')->
-		// 	// setReplyTo('wangstar1031@hotmail.com','Jinzhou IT')->
-		// 	setSubject('Welcome to Leadswami!')->
-		// 	setText('This is your password.')->
-		// 	setHtml('<strong>' . $newPass . '</strong>');
-		// $res = $mailin->send();
-		// print_r($res);
 
 		return view('dashboard', ['email'=>$email, 'matching'=>'changed']);
 	}

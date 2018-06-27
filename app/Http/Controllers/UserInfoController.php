@@ -87,6 +87,22 @@ class UserInfoController extends Controller
 		return $profiles;
 	}
 
+	public static function SavePayMethod($email, Request $request){
+		$payCode = $request->input('payCode');
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return 0;
+		}
+		$userId = $user[0]->Id;
+		$billData = DB::select('select Id from billing where UserId = ?', [$userId]);
+		if( count($billData) == 0){
+			DB::insert('insert into billing(UserId, StripeCardNumber) values(?,?)', [ $userId, $payCode]);
+		} else{
+			DB::update('update billing set StripeCardNumber = ? where UserId = ?',[ $payCode, $userId]);
+		}
+		return 1;
+	}
+
 	public static function SaveBillingDatas(Request $request){
 		$email = $request->input('eMail');
 		$user = DB::select('select Id from users where Email = ?', [$email]);
@@ -100,12 +116,11 @@ class UserInfoController extends Controller
 		$zipCode = $request->input('zipCode');
 		$city = $request->input('city');
 		$state = $request->input('state');
-		$payCode = $request->input('payCode');
 		$billData = DB::select('select Id from billing where UserId = ?', [$userId]);
 		if( count($billData) == 0){
-			DB::insert('insert into billing(UserId, CompanyName, TaxVatId, Country, ZipCode, City, State, StripeCardNumber) values(?,?,?,?,?,?,?,?)', [ $userId, $companyName, $taxId, $country, $zipCode, $city, $state, $payCode]);
+			DB::insert('insert into billing(UserId, CompanyName, TaxVatId, Country, ZipCode, City, State) values(?,?,?,?,?,?,?)', [ $userId, $companyName, $taxId, $country, $zipCode, $city, $state]);
 		} else{
-			DB::update('update billing set CompanyName = ?, TaxVatId = ?, Country = ?, ZipCode = ?, City = ?, State = ?, StripeCardNumber = ? where UserId = ?',[$companyName, $taxId, $country, $zipCode, $city, $state, $payCode, $userId]);
+			DB::update('update billing set CompanyName = ?, TaxVatId = ?, Country = ?, ZipCode = ?, City = ?, State = ? where UserId = ?',[$companyName, $taxId, $country, $zipCode, $city, $state, $userId]);
 		}
 		return 1;
 	}

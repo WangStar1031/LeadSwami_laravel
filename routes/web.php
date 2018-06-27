@@ -31,6 +31,7 @@ Route::group(['middleware' => 'use.ssl'], function(){
 	Route::post('/delaccount', 'DashboardController@delAccount');
 	Route::get('/payment', 'PaymentController@index');
 	Route::post('/payment', 'PaymentController@postBillingData');
+	Route::post('/payMethod', 'PaymentController@postPayMethod');
 
 	Route::get('/subscription', 'SubscriptionController@index');
 	Route::post('/subscription', 'SubscriptionController@postPlan');

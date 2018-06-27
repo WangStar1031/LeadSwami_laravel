@@ -38,16 +38,9 @@ class ZapierController extends Controller
 		return view('authZapier', ['email'=>$email, 'avatar'=>$avatar, 'client_id'=>$client_ID, 'redirect_uri'=>$redirect_uri, 'state'=>$state]);
 	}
 	public static function getUserInfo(Request $request){
-		// $access_token = $request->input('access_token');
-		// $user = DB::select('select * from users');
-		// if( count($user) != 0){
-		// 	$email = $user[0]->Email;
-			$username = new \stdClass;
-			$username->username = 'info@leadswami.com';
-			return response(json_encode($username), 200)->header('Content-Type', 'application/json');
-			// echo json_encode($username);
-		// }
-		// return null;
+		$username = new \stdClass;
+		$username->username = 'info@leadswami.com';
+		return response(json_encode($username), 200)->header('Content-Type', 'application/json');
 	}
 	public static function accessFromZapier(Request $request){
 		$code = $request->input('code');

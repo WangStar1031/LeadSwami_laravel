@@ -26,7 +26,17 @@ class PaymentController extends Controller
 		} else{
 			return redirect('/');
 		}
-		UserInfoController::SaveBillingDatas($request);
+		UserInfoController::SaveBillingDatas( $request);
+		return redirect('payment');
+	}
+	public function postPayMethod(Request $request){
+		$email = "";
+		if( $request->session()->has('LeadswamiAdmin')){
+			$email = $request->session()->get('LeadswamiAdmin');
+		} else{
+			return redirect('/');
+		}
+		UserInfoController::SavePayMethod($email, $request);
 		return redirect('payment');
 	}
 	public function postPromoCode(Request $request){

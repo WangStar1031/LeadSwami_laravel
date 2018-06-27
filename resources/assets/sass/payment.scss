@@ -4,8 +4,8 @@ $mainColor : #989898;
 .payDetails img{ width: 100px; border-radius: 100%; margin-bottom: 50px; }
 .payDetails h2, .payMethod h2, .payMethod h2, .billHistory h2{ margin-bottom: 50px; }
 .payContents label{ margin-top: 20px; color: $mainColor; }
-.payContents input[type='text']{ border: none; border-bottom: 1px solid $mainColor; width: 80%; padding-left: 10px; }
-.payContents input[type='submit'], .btnEdit, .btnDelCard{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
+.payContents input[type='text']{ border: none; border-bottom: 1px solid $mainColor; width: 100%; padding-left: 10px; }
+.payContents input[type='submit'], .btnEdit, .btnDelCard, .btnCardNumSave, .btnCardNumCancel{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
 input:focus{ outline: none; }
 .promoCode, .billHistory{ border-top: 1px solid $mainColor; margin-top: 30px; color: $mainColor; }
 .DelAcount input{ background-color: #f3f7fa !important; color: black!important; }
@@ -14,6 +14,8 @@ input:focus{ outline: none; }
 .payMethod table td{ padding: 10px; color: $mainColor; }
 .fa-check-circle-o{ color: green; }
 .billHistory table{ width: 100%; }
-.btnEdit{ margin-left: 15px; margin-right: 20px; background-color: #bec3c7!important; width: 5em; float: left; cursor: pointer; }
-.btnDelCard{ background-color: #f75c4a!important; width: 10em; cursor: pointer;}
+.btnEdit{ margin-left: 15px; margin-right: 20px; background-color: #bec3c7!important; float: left; cursor: pointer; }
+.btnDelCard{ background-color: #f75c4a!important; cursor: pointer;}
 input[name="submitApply"]{ background-color: #e6eaed!important; color: #b7bbbe!important; }
+.btnCardNumSave{ margin-left: 15px; margin-right: 20px;}
+.btnCardNumCancel{ background-color: #bec3c7!important;}
