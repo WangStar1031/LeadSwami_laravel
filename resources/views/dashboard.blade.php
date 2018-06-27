@@ -17,11 +17,12 @@
         	body{ margin: 0px; }
         </style>
     </head>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/all.js"></script>
 	<body>
 		@include('topbar', ['email'=>$email])
 		@include('sidebar', ['active' => 'account', 'email'=>$email])
 		@include('account', ['email'=>$email, 'matching'=>$matching])
 	</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/all.js"></script>
+
 </html> 

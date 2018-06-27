@@ -51,7 +51,7 @@
 				<input type="text" name="payCode" style="display: none;" value="@php echo $billData->StripeCardNumber;@endphp">
 			</div>
 			<div class="col-xs-4">
-				<label>Expiration</label><br/>
+				<label>Expiration Date</label><br/>
 				<input type="text" name="expDate" readonly value="@php echo $billData->ExpirationDate;@endphp">
 			</div>
 			<div class="col-xs-12">

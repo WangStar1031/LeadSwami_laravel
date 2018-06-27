@@ -158,6 +158,15 @@ class UserInfoController extends Controller
 		}
 		return $card[0]->StripeCardNumber;
 	}
+	public static function UpdateCardNumber($email, $postedCardNumber){
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return;
+		}
+		$userId = $user[0]->Id;
+		$card = DB::update('update billing set StripeCardNumber=? where UserId = ?', [ $postedCardNumber, $userId]);
+		return;
+	}
 	public static function SavePromoCode($email, $request){
 		$user = DB::select('select Id from users where Email = ?', [$email]);
 		if( count($user) == 0){

@@ -127,3 +127,7 @@ $('.modal').on('show.bs.modal', centerModal);
 $(window).on("resize", function () {
 	$('.modal:visible').each(centerModal);
 });
+$(document).ready(function(){
+	$(":input[data-inputmask-mask]").inputmask();
+	$(":input[data-inputmask-alias]").inputmask();
+});

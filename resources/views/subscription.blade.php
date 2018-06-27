@@ -19,6 +19,9 @@
 <body>
 	@include('topbar',['email'=>$email])
 	@include('sidebar', ['active' => 'subscription', 'email'=>$email])
-	@include('subscription_contents',['email'=>$email, 'isActive'=>$isActive])
+	@include('subscription_contents',['email'=>$email, 'isActive'=>$isActive, 'cardNumber'=>$cardNumber, 'errMsg'=>$errMsg])
 </body>
+    <script src="js/jquery.min.js"></script>
+<script src='js/jquery.inputmask.bundle.js'></script>
+    <script src="js/all.js"></script>
 </html>
