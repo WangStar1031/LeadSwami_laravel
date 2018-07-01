@@ -61,12 +61,12 @@ class SubscriptionController extends Controller
 			return view('subscription', ['email'=>$email, 'isActive'=>$billingData->isActive, 'cardNumber'=>$billingData->cardNumber, 'errMsg'=>'* Invalid Card Number. *']);
 		}
 		$expDate = $request->input('expDate');
-		$arrDate = explode('/', $expDate);
-		$expMonth = $arrDate[0];
-		$expYear = $arrDate[1];
 		if( $expDate == ''){
 			return view('subscription', ['email'=>$email, 'isActive'=>$billingData->isActive, 'cardNumber'=>$billingData->cardNumber, 'errMsg'=>'* No Expiration Date. *']);
 		}
+		$arrDate = explode('/', $expDate);
+		$expMonth = $arrDate[0];
+		$expYear = $arrDate[1];
 		if( !is_numeric( $expMonth) || !is_numeric( $expYear)){
 			return view('subscription', ['email'=>$email, 'isActive'=>$billingData->isActive, 'cardNumber'=>$billingData->cardNumber, 'errMsg'=>'* Invalid Expiration Date. *']);
 		}
@@ -108,7 +108,7 @@ class SubscriptionController extends Controller
 					'number' => $cardNumber,
 					'exp_month' => $expMonth,
 					'exp_year' => $expYear,
-					'cvc' => '311',
+					'cvc' => $cvcCard,
 				],
 			]);
 			if(!isset($token['id'])){
@@ -125,7 +125,8 @@ class SubscriptionController extends Controller
 				// Write Here your Database insert logic.
 				UserInfoController::updateExpirationDate($email, $expiration);
 				UserInfoController::updateBillingData($email, 'Add in wallet', $amount, $expiration);
-				return redirect('/subscription');
+				return view('subscription', ['email'=>$email, 'isActive'=>1, 'cardNumber'=>$cardNumber, 'errMsg'=>'succeeded']);
+				// return redirect('/subscription');
 			} else{
 				\Session::put('error', 'Money not add in wallet!!');
 				return view('subscription', ['email'=>$email, 'isActive'=>$billingData->isActive, 'cardNumber'=>$billingData->cardNumber, 'errMsg'=>'* Money not add in wallet. *']);
@@ -144,6 +145,6 @@ class SubscriptionController extends Controller
 			return view('subscription', ['email'=>$email, 'isActive'=>$billingData->isActive, 'cardNumber'=>$billingData->cardNumber, 'errMsg'=>'*' . $e->getMessage() . ' *']);
 			// return redirect('payment');
 		}
-		return view('subscription', ['email'=>$email, 'errMsg'=>'']);
+		return view('subscription', ['email'=>$email, 'errMsg'=>'succeeded']);
 	}
 }

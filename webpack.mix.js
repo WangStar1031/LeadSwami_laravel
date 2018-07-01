@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.scripts([
 	'resources/assets/js/account.js',
 	'resources/assets/js/payment.js',
-	'resources/assets/js/profiles.js'
+	'resources/assets/js/profiles.js',
+	'resources/assets/js/subscription.js'
 	], 'public/js/all.js')
    .sass('resources/assets/sass/app.scss', 'public/css');

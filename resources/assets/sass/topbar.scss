@@ -6,30 +6,30 @@
 	border-bottom: 1px solid #989898;
 	width: 100%;
 	z-index: 100;
-}
-.topBar a{
-	text-decoration: none;
-	color: #989898;
-}
-.topBar img, .topUserAvatar img{
-	width: 40px;
-}
-.topUserInfo{
-	cursor: pointer;
-	float: right;
-}
-.topUserAvatar img{
-	border-radius: 100%;
-}
-.topTitle{
-	font-size: 20px;
-	/*top: -10px;*/
-	position: relative;
-	margin-left: 10px;
-}
-.topUserName{
-	margin-right: 20px;
-	font-size: 20px;
-	position: relative;
-	/*top: -10px;*/
+	a{
+		text-decoration: none;
+		color: #989898;
+	}
+	img, .topUserAvatar img{
+		width: 40px;
+	}
+	.topUserInfo{
+		cursor: pointer;
+		float: right;
+	}
+	.topUserAvatar img{
+		border-radius: 100%;
+	}
+	.topTitle{
+		font-size: 20px;
+		/*top: -10px;*/
+		position: relative;
+		margin-left: 10px;
+	}
+	.topUserName{
+		margin-right: 20px;
+		font-size: 20px;
+		position: relative;
+		/*top: -10px;*/
+	}
 }

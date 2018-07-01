@@ -23,17 +23,23 @@
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
-	.proTable tbody tr:nth-child(odd){
-		background-color: #ddd;
-	}
 	.proTable td{
-		padding: 5px;
+		padding: 5px 7px 5px 7px;
+		border: 1px solid #ddd;
+		input[type="text"]{
+			border: none;
+			width: 100%;
+		}
+		input:focus{
+			outline: none;
+		}
 	}
 	.proTable img{
 		cursor: pointer;
 	}
-}
-.img-responsive{
-	margin: auto;
-	border-radius: 100%;
+	.img-responsive{
+		margin: auto;
+		border-radius: 100%;
+		width: 100%;
+	}
 }

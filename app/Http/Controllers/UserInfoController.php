@@ -74,9 +74,25 @@ class UserInfoController extends Controller
 		DB::delete('delete from billing where UserId = ?', [$userId]);
 		DB::delete('delete from billhistory where UserId = ?', [$userId]);
 		DB::delete('delete from users where Email = ?', [$email]);
-
 	}
-
+	public static function removeProfiles($proIDs){
+		$query = 'delete from profiles where Id in ('.$proIDs.')';
+		DB::delete($query);
+		return;
+	}
+	public static function getProfileSearch($email, $searchOption){
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return [];
+		}
+		$userId = $user[0]->Id;
+		$query = 'select * from profiles where UserId = '.$userId.' and (Name like "%'.$searchOption.'%" or LastName like "%'.$searchOption.'%" or Headline like "%'.$searchOption.'%" or Location like "%'.$searchOption.'%" or Url like "%'.$searchOption.'%" or Email like "%'.$searchOption.'%" or PhoneNumber like "%'.$searchOption.'%" or LastJob like "%'.$searchOption.'%" or Twitter like "%'.$searchOption.'%" or Site like "%'.$searchOption.'%" or Tag like "%'.$searchOption.'%")';
+		// echo $query;
+		$profiles = DB::select($query);
+		return $profiles;
+		// $profiles = DB::select('select * from profiles where UserId = ? and (Name like "%?%" or LastName like "%?%" or Headline like "%?%" or Location like "%?%" or Url like "%?%" or Email like "%?%" or PhoneNumber like "%?%" or LastJob like "%?%" or Twitter like "%?%" or Site like "%?%" or Tag like "%?%")', [$userId, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption]);
+		// return $profiles;
+	}
 	public static function getProfileData($email){
 		$user = DB::select('select Id from users where Email = ?', [$email]);
 		if( count($user) == 0){

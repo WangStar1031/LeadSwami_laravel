@@ -37,6 +37,8 @@ Route::group(['middleware' => 'use.ssl'], function(){
 	Route::post('/subscription', 'SubscriptionController@postPlan');
 
 	Route::get('/profiles', 'ProfilesController@index');
+	Route::post('/profiles', 'ProfilesController@postMethod');
+
 	Route::get('/logout', 'LogoutController@index');
 
 	Route::post('/savePromoCode', 'PaymentController@postPromoCode');

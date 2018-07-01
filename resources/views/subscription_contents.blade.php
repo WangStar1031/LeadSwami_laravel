@@ -1,7 +1,17 @@
 <div class="subContents">
 	<h2>Plans</h2>
 	<div class="subMain">
-		<p @php echo $errMsg==''? 'style="display: none;"' : 'style="color:red;"';@endphp>@php echo $errMsg;@endphp</p>
+		@php
+			if($errMsg == 'succeeded'){
+		@endphp
+			<p style="color: blue;">Successfully charged.</p>
+		@php
+			} else if($errMsg != ''){
+		@endphp
+			<p style="color: red;">@php echo $errMsg;@endphp</p>
+		@php
+			}
+		@endphp
 		<div class="planOption">
 			<!-- {{ csrf_field() }} -->
 			<p  style="display: none;">
@@ -42,51 +52,50 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-
-<div id="purchaseModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog purchaseModal">
-		<div class="modal-content">
-			<form method="post">
-				{{ csrf_field() }}
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h3 class="modal-title">Stripe</h3>
-				</div>
-				<div class="modal-body" style="background-color: #eff2f5;">
-					<table style="width: 100%;">
-						<tr>
-							<td><label for="cardNumber">Card number : </label></td>
-							<td><label for="expDate">Expires : </label></td>
-						</tr>
-						<tr>
-							<td>
-								<input type="text" name="cardNumber" data-inputmask-mask="9999 9999 9999 9999" value="@php echo $cardNumber;@endphp;">
-							</td>
-							<td>
-								<input type="text" name="expDate" data-inputmask-alias="mm/yyyy" data-inputmask="'yearrange': { 'minyear': '@php echo date('Y');@endphp'}">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label>Card code : </label>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="text" name="cardCode" placeholder="CVC" data-inputmask-mask="999">
-							</td>
-							
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer" style="background-color: #eff2f5;">
-					<button class="btn btn-primary" style="width: 100%;">CONFIRM</button>
-				</div>
-			</form>
+	<div id="purchaseModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog purchaseModal">
+			<div class="modal-content">
+				<form method="post">
+					{{ csrf_field() }}
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h3 class="modal-title">Stripe</h3>
+					</div>
+					<div class="modal-body" style="background-color: #eff2f5;">
+						<table style="width: 100%;">
+							<tr>
+								<td><label for="cardNumber">Card number : </label></td>
+								<td><label for="expDate">Expires : </label></td>
+							</tr>
+							<tr>
+								<td>
+									<input type="text" name="cardNumber" data-inputmask-mask="9999 9999 9999 9999" value="@php echo $cardNumber;@endphp;">
+								</td>
+								<td>
+									<input type="text" name="expDate" data-inputmask-alias="mm/yyyy" data-inputmask="'yearrange': { 'minyear': '@php echo date('Y');@endphp'}">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Card code : </label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="text" name="cardCode" placeholder="CVC" data-inputmask-mask="999">
+								</td>
+								
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer" style="background-color: #eff2f5;">
+						<button class="btn btn-primary" style="width: 100%;">CONFIRM</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
+

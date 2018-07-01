@@ -8360,14 +8360,14 @@ button.close {
   width: calc( 100% - 100px);
 }
 
-.accDetails img {
+.accContents .accDetails img {
   width: 100px;
   border-radius: 100%;
   margin-bottom: 50px;
 }
 
-.accDetails h2,
-.passInfo h2 {
+.accContents .accDetails h2,
+.accContents .passInfo h2 {
   margin-bottom: 50px;
 }
 
@@ -8377,7 +8377,7 @@ button.close {
 }
 
 .accContents input[type='text'],
-.passInfo input[type='password'] {
+.accContents .passInfo input[type='password'] {
   border: none;
   border-bottom: 1px solid #989898;
   width: 80%;
@@ -8393,45 +8393,45 @@ button.close {
   color: white;
 }
 
-input:focus {
+.accContents input:focus {
   outline: none;
 }
 
-.noteContents {
+.accContents .noteContents {
   border-top: 1px solid #989898;
   margin-top: 30px;
   padding-top: 20px;
   color: #989898;
 }
 
-.DelAcount input {
+.accContents .DelAcount input {
   background-color: #f3f7fa !important;
   color: black !important;
 }
 
-.HideItem {
+.accContents .HideItem {
   display: none;
 }
 
-.passInfo i {
+.accContents .passInfo i {
   margin-right: 10px;
 }
 
-.passInfo table td {
+.accContents .passInfo table td {
   padding: 10px;
   color: #989898;
 }
 
-.fa-check-circle-o {
+.accContents .fa-check-circle-o {
   color: green;
 }
 
-.sucessMsg {
+.accContents .sucessMsg {
   color: green;
 }
 
-.wrongMsg,
-.noMatchingMsg {
+.accContents .wrongMsg,
+.accContents .noMatchingMsg {
   color: red;
 }
 
@@ -8547,16 +8547,16 @@ body {
   overflow: auto;
 }
 
-.payDetails img {
+.payContents .payDetails img {
   width: 100px;
   border-radius: 100%;
   margin-bottom: 50px;
 }
 
-.payDetails h2,
-.payMethod h2,
-.payMethod h2,
-.billHistory h2 {
+.payContents .payDetails h2,
+.payContents .payMethod h2,
+.payContents .payMethod h2,
+.payContents .billHistory h2 {
   margin-bottom: 50px;
 }
 
@@ -8573,10 +8573,10 @@ body {
 }
 
 .payContents input[type='submit'],
-.btnEdit,
-.btnDelCard,
-.btnCardNumSave,
-.btnCardNumCancel {
+.payContents .btnEdit,
+.payContents .btnDelCard,
+.payContents .btnCardNumSave,
+.payContents .btnCardNumCancel {
   margin-top: 20px;
   background-color: #4da2ff;
   border: none;
@@ -8587,44 +8587,44 @@ body {
   overflow: auto;
 }
 
-input:focus {
+.payContents input:focus {
   outline: none;
 }
 
-.promoCode,
-.billHistory {
+.payContents .promoCode,
+.payContents .billHistory {
   border-top: 1px solid #989898;
   margin-top: 30px;
   color: #989898;
 }
 
-.DelAcount input {
+.payContents .DelAcount input {
   background-color: #f3f7fa !important;
   color: black !important;
 }
 
-.HideItem {
+.payContents .HideItem {
   display: none;
 }
 
-.payMethod i {
+.payContents .payMethod i {
   margin-right: 10px;
 }
 
-.payMethod table td {
+.payContents .payMethod table td {
   padding: 10px;
   color: #989898;
 }
 
-.fa-check-circle-o {
+.payContents .fa-check-circle-o {
   color: green;
 }
 
-.billHistory table {
+.payContents .billHistory table {
   width: 100%;
 }
 
-.btnEdit {
+.payContents .btnEdit {
   margin-left: 15px;
   margin-right: 20px;
   background-color: #bec3c7 !important;
@@ -8632,22 +8632,22 @@ input:focus {
   cursor: pointer;
 }
 
-.btnDelCard {
+.payContents .btnDelCard {
   background-color: #f75c4a !important;
   cursor: pointer;
 }
 
-input[name="submitApply"] {
+.payContents input[name="submitApply"] {
   background-color: #e6eaed !important;
   color: #b7bbbe !important;
 }
 
-.btnCardNumSave {
+.payContents .btnCardNumSave {
   margin-left: 15px;
   margin-right: 20px;
 }
 
-.btnCardNumCancel {
+.payContents .btnCardNumCancel {
   background-color: #bec3c7 !important;
 }
 
@@ -8679,21 +8679,28 @@ input[name="submitApply"] {
   padding-bottom: 10px;
 }
 
-.profileContents .proTable tbody tr:nth-child(odd) {
-  background-color: #ddd;
+.profileContents .proTable td {
+  padding: 5px 7px 5px 7px;
+  border: 1px solid #ddd;
 }
 
-.profileContents .proTable td {
-  padding: 5px;
+.profileContents .proTable td input[type="text"] {
+  border: none;
+  width: 100%;
+}
+
+.profileContents .proTable td input:focus {
+  outline: none;
 }
 
 .profileContents .proTable img {
   cursor: pointer;
 }
 
-.img-responsive {
+.profileContents .img-responsive {
   margin: auto;
   border-radius: 100%;
+  width: 100%;
 }
 
 .sideBar {
@@ -8706,26 +8713,26 @@ input[name="submitApply"] {
   z-index: 100;
 }
 
-.sideOptions {
+.sideBar .sideOptions {
   position: relative;
   text-align: center;
 }
 
-.sideOptions a {
+.sideBar .sideOptions a {
   text-decoration: none;
   color: white;
   height: 40px;
 }
 
-.sideOption p {
+.sideBar .sideOption p {
   margin: 0px;
 }
 
-.sideOption {
+.sideBar .sideOption {
   padding: 10px;
 }
 
-.selectedOption {
+.sideBar .selectedOption {
   background-color: #5f9eff;
 }
 
@@ -8739,20 +8746,20 @@ input[name="submitApply"] {
   width: calc( 100% - 100px);
 }
 
-.subMain {
+.subContents .subMain {
   margin: auto;
   text-align: center;
 }
 
-.planOption p {
+.subContents .planOption p {
   margin-bottom: 30px;
 }
 
-.HighLight {
+.subContents .HighLight {
   color: #7291ff;
 }
 
-.basicPan {
+.subContents .basicPan {
   background-color: white;
   color: #989898;
   margin-top: 30px;
@@ -8761,8 +8768,8 @@ input[name="submitApply"] {
           box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.16);
 }
 
-.basicPan .Amount,
-.proPan .Amount {
+.subContents .basicPan .Amount,
+.subContents .proPan .Amount {
   font-size: 2em;
   padding: 15px;
   border-radius: 3px;
@@ -8772,41 +8779,41 @@ input[name="submitApply"] {
   width: 5em;
 }
 
-.basicPan .Amount {
+.subContents .basicPan .Amount {
   background-color: #f8f9fb;
 }
 
-.proPan .Amount {
+.subContents .proPan .Amount {
   background-color: #756ecd;
 }
 
-.proPan {
+.subContents .proPan {
   background-color: #716aca;
   color: white;
   padding-top: 60px;
 }
 
-.IsActive {
+.subContents .IsActive {
   font-size: 0.8em;
 }
 
-.Amount {
+.subContents .Amount {
   margin: 30px;
 }
 
-.NonVis {
+.subContents .NonVis {
   visibility: hidden;
 }
 
-.proPan {
+.subContents .proPan {
   padding-bottom: 90px;
 }
 
-.basicPan {
+.subContents .basicPan {
   padding-bottom: 100px;
 }
 
-.btnPurchase {
+.subContents .btnPurchase {
   margin: auto;
   margin-top: 30px;
   background-color: white;
@@ -8817,23 +8824,23 @@ input[name="submitApply"] {
   cursor: pointer;
 }
 
-.btnSwitch {
+.subContents .btnSwitch {
   position: relative;
   top: 5px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.purchaseModal {
+.subContents .purchaseModal {
   width: 400px !important;
 }
 
-.modal-title {
+.subContents .modal-title {
   font-weight: bold;
   color: #0079cb;
 }
 
-.modal-body table tr td label {
+.subContents .modal-body table tr td label {
   padding-top: 20px;
 }
 
@@ -8947,27 +8954,27 @@ input[name="submitApply"] {
 }
 
 .topBar img,
-.topUserAvatar img {
+.topBar .topUserAvatar img {
   width: 40px;
 }
 
-.topUserInfo {
+.topBar .topUserInfo {
   cursor: pointer;
   float: right;
 }
 
-.topUserAvatar img {
+.topBar .topUserAvatar img {
   border-radius: 100%;
 }
 
-.topTitle {
+.topBar .topTitle {
   font-size: 20px;
   /*top: -10px;*/
   position: relative;
   margin-left: 10px;
 }
 
-.topUserName {
+.topBar .topUserName {
   margin-right: 20px;
   font-size: 20px;
   position: relative;
