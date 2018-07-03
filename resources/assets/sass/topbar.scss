@@ -1,14 +1,13 @@
-
 .topBar{
 	position: fixed;
 	padding: 20px;
-	color: #989898;
-	border-bottom: 1px solid #989898;
+	color: $mainColor;
+	border-bottom: 1px solid $mainColor;
 	width: 100%;
 	z-index: 100;
 	a{
 		text-decoration: none;
-		color: #989898;
+		color: $mainColor;
 	}
 	img, .topUserAvatar img{
 		width: 40px;

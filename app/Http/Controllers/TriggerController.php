@@ -16,7 +16,7 @@ class TriggerController extends Controller
 			return response(json_encode(array()), 200)->header('Content-Type', 'application/json');
 		}
 		$userId = $user[0]->Id;
-		$profiles = DB::select('select * from profiles where UserId = ? and ZapTag <> 1', [$userId]);
+		$profiles = DB::select('select * from duplication_profiles where UserId = ? and ZapTag <> 1', [$userId]);
 		if( count($profiles) == 0){
 			return response(json_encode(array()), 200)->header('Content-Type', 'application/json');
 		}
@@ -42,7 +42,7 @@ class TriggerController extends Controller
 			array_push($ids, $curProfile->Id);
 		}
 		$inclouse = implode(',', $ids);
-		DB::update('update profiles set ZapTag = 1 where Id in (?)', [$inclouse]);
+		DB::update('update duplication_profiles set ZapTag = 1 where Id in (?)', [$inclouse]);
 		return response(json_encode($retVal), 200)->header('Content-Type', 'application/json');
 	}
 }

@@ -1,4 +1,17 @@
-
+@php
+	$arrHeader = array();
+	array_push($arrHeader, "Name");
+	array_push($arrHeader, "LastName");
+	array_push($arrHeader, "Headline");
+	array_push($arrHeader, "Location");
+	array_push($arrHeader, "ProfileURL");
+	array_push($arrHeader, "Email");
+	array_push($arrHeader, "PhoneNumber");
+	array_push($arrHeader, "LastJob");
+	array_push($arrHeader, "Twitter");
+	array_push($arrHeader, "Site");
+	array_push($arrHeader, "Tag");
+@endphp
 <div class="profileContents">
 	<h2>Profile</h2>
 	<form method="post" id="proForm">
@@ -26,17 +39,22 @@
 				<tr>
 					<th></th>
 					<th></th>
-					<th>Name</th>
-					<th>LastName</th>
-					<th>Headline</th>
-					<th>Location</th>
-					<th>Profile URL</th>
-					<th>Email</th>
-					<th>Phone Number</th>
-					<th>Last Job</th>
-					<th>Twitter</th>
-					<th>Site</th>
-					<th>Tag</th>
+					@php
+					for( $i = 0; $i < count($arrHeader); $i++){
+						echo '<th onclick="proHeaderClicked(' . $i . ')">' . $arrHeader[$i] . '<span class="orderDir ';
+						if( $orderIndex == $i){
+							echo 'proActive';
+							if( $orderDir == 'ASC'){
+								echo ' proAsc"><i class="fa fa-angle-up" aria-hidden="true"></i>';
+							} else if($orderDir == 'DESC'){
+								echo ' proDesc"><i class="fa fa-angle-down" aria-hidden="true"></i>';
+							}
+						} else{
+							echo '">';
+						}
+						echo '</span></th>';
+					}
+					@endphp
 				</tr>
 			</thead>
 			<tbody>

@@ -1,23 +1,21 @@
-$mainColor : #989898;
-
 .payContents{ 
 	position: absolute; top: 80px; margin-left: 100px; padding: 30px; color: black; font-size: 15px; width: calc( 100% - 100px); height: calc(100% - 80px); overflow: auto; 
 	.payDetails img{ width: 100px; border-radius: 100%; margin-bottom: 50px; }
 	.payDetails h2, .payMethod h2, .payMethod h2, .billHistory h2{ margin-bottom: 50px; }
 	label{ margin-top: 20px; color: $mainColor; }
 	input[type='text']{ border: none; border-bottom: 1px solid $mainColor; width: 100%; padding-left: 10px; }
-	input[type='submit'], .btnEdit, .btnDelCard, .btnCardNumSave, .btnCardNumCancel{ margin-top: 20px; background-color: #4da2ff; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
+	input[type='submit'], .btnEdit, .btnDelCard, .btnCardNumSave, .btnCardNumCancel{ margin-top: 20px; background-color: $paySubmitCol; border: none; border-radius: 5px; padding: 10px 20px 10px 20px; color: white; height: calc(100% - 80px); overflow: auto; }
 	input:focus{ outline: none; }
 	.promoCode, .billHistory{ border-top: 1px solid $mainColor; margin-top: 30px; color: $mainColor; }
-	.DelAcount input{ background-color: #f3f7fa !important; color: black!important; }
+	.DelAcount input{ background-color: $payDelCol !important; color: black!important; }
 	.HideItem { display: none; }
 	.payMethod i{ margin-right: 10px; }
 	.payMethod table td{ padding: 10px; color: $mainColor; }
 	.fa-check-circle-o{ color: green; }
 	.billHistory table{ width: 100%; }
-	.btnEdit{ margin-left: 15px; margin-right: 20px; background-color: #bec3c7!important; float: left; cursor: pointer; }
-	.btnDelCard{ background-color: #f75c4a!important; cursor: pointer;}
-	input[name="submitApply"]{ background-color: #e6eaed!important; color: #b7bbbe!important; }
+	.btnEdit{ margin-left: 15px; margin-right: 20px; background-color: $payNoCol !important; float: left; cursor: pointer; }
+	.btnDelCard{ background-color: $payDelCard !important; cursor: pointer;}
+	input[name="submitApply"]{ background-color: $payAppBack!important; color: $payApplyCol !important; }
 	.btnCardNumSave{ margin-left: 15px; margin-right: 20px;}
-	.btnCardNumCancel{ background-color: #bec3c7!important;}
+	.btnCardNumCancel{ background-color: $payNoCol!important;}
 }

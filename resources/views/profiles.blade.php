@@ -19,6 +19,6 @@
 <body>
 	@include('topbar',['email'=>$email])
 	@include('sidebar', ['active' => 'profiles', 'email'=>$email])
-	@include('profiles_contents',['email'=>$email, 'profiles'=>$profiles])
+	@include('profiles_contents',['email'=>$email, 'profiles'=>$profiles, 'orderIndex'=>$orderIndex, 'orderDir'=>$orderDir])
 </body>
 </html>

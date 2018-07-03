@@ -16,16 +16,17 @@
 	}
 	.proTable{
 		margin-top: 20px;
-		border: 1px solid #ddd;
+		border: 1px solid $grayBorder;
 	}
 	.proTable th{
 		font-weight: bold;
 		padding-top: 10px;
 		padding-bottom: 10px;
+		cursor: pointer;
 	}
 	.proTable td{
 		padding: 5px 7px 5px 7px;
-		border: 1px solid #ddd;
+		border: 1px solid $grayBorder;
 		input[type="text"]{
 			border: none;
 			width: 100%;

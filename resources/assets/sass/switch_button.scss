@@ -1,3 +1,4 @@
+
 .switch{
   opacity: 0;
   position: absolute;
@@ -76,8 +77,8 @@
 }
 .switch.switch-bootstrap:checked + .lable::after {
   left: 32px;
-  background-color: #FFF;
-  border: 4px solid #FFF;
+  background-color: white;
+  border: 4px solid white;
   text-shadow: 0 -1px 0 rgba(0, 200, 0, 0.25);
 }
 /* CSS3 on/off switches */

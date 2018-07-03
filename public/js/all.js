@@ -167,6 +167,17 @@ function btnSearchClicked(){
 	}
 	$("#proForm").submit();
 }
+function proHeaderClicked(_index){
+	var orderDir = "ASC";
+	if( $(".orderDir").eq(_index).hasClass('proActive')){
+		if( $(".orderDir").eq(_index).hasClass('proAsc')){
+			orderDir = "DESC";
+		}
+	}
+	$("#proCat").val("sort");
+	$("#proIDs").val(_index + "," + orderDir);
+	$("#proForm").submit();
+}
 $(document).ready(function(){
 	$(":input[data-inputmask-mask]").inputmask();
 	$(":input[data-inputmask-alias]").inputmask();

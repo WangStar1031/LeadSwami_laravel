@@ -1,6 +1,6 @@
-body{ margin: 0px; background-color: #f0f0f0; }
+body{ margin: 0px; background-color: $zapMainCol; }
 .authZapier{
-        .topArea{ width: 150px; margin: auto; margin-top: 20px; margin-bottom: 5px; border-radius: 10px; height: 12px; background-color: #f0f0f0f0; border: 1px solid #ddd;}
+        .topArea{ width: 150px; margin: auto; margin-top: 20px; margin-bottom: 5px; border-radius: 10px; height: 12px; background-color: $zapMainCol; border: 1px solid $grayBorder;}
         .contents{ text-align: center; width: 500px; margin: auto; margin-top: 30px; border-radius: 10px; background-color: white; color: gray;box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.16);}
         .Imgs  img{ width: 100px; border-radius: 100%;}
         .avatarImg{ float: left; }
@@ -8,11 +8,11 @@ body{ margin: 0px; background-color: #f0f0f0; }
         .title h3{ margin: 30px; }
         .bellowContents{text-align: left; font-size: 1.2em; }
         .bellowContents p{ margin-top: 20px; }
-        .SignForm{ background-color: #555; color: white; padding-bottom: 20px;}
+        .SignForm{ background-color: $zapBackCol; color: white; padding-bottom: 20px;}
         .infoEdit input{ color: black; width: 100%; }
         .infoEdit p{ text-align: left; margin-left: 15px; margin-top: 10px;}
         .bottomContents{ padding: 15px 0px 10px 0px; font-weight: bold; color: gray;}
         input[type='submit'], .btnCancel{ float: left; text-align: left; border: none; color: gray; padding: 8px 12px 8px 12px; font-weight: bold; font-size: 1.2em; margin-top: 12px; margin-right: 10px; border-radius: 5px;}
-        .btnAllow{ background-color: #0682ca; color: white!important;}
+        .btnAllow{ background-color: $zapAllow; color: white!important;}
         input{ color: black!important; }
 }

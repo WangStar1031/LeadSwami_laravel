@@ -52,11 +52,12 @@ class UserInfoController extends Controller
 		$strLastJob = $profile['strLastJob'];
 		$strSite = $profile['strSite'];
 		$strTag = $profile['strTag'];
-		$profile = DB::select('select Id from profiles where UserId = ? and Email = ?', [$Id, $strEmail]);
-		if( count($profile) != 0){
-			return response()->json(['msg'=>'Already existed.']);
-		}
 		if( UserInfoController::DiscountCoupon($Email) == true){
+			DB::insert('insert into duplication_profiles(UserId, Name, LastName, Headline, Location, Url, Email, ImgUrl, PhoneNumber, LastJob, Twitter, Site, Tag) values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$Id, $strName, $strLastName, $strHeadLine, $strLocation, $strProfile, $strEmail, $strImgUrl, $strPhoneNumber, $strLastJob, $strTwitter, $strSite, $strTag]);
+			$profile = DB::select('select Id from profiles where UserId = ? and Email = ?', [$Id, $strEmail]);
+			if( count($profile) != 0){
+				return response()->json(['msg'=>'Already existed.']);
+			}
 			DB::insert('insert into profiles(UserId, Name, LastName, Headline, Location, Url, Email, ImgUrl, PhoneNumber, LastJob, Twitter, Site, Tag) values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$Id, $strName, $strLastName, $strHeadLine, $strLocation, $strProfile, $strEmail, $strImgUrl, $strPhoneNumber, $strLastJob, $strTwitter, $strSite, $strTag]);
 			return response()->json(['msg'=>'Inserted.']);
 		}
@@ -69,6 +70,7 @@ class UserInfoController extends Controller
 			return;
 		}
 		$userId = $user[0]->Id;
+		DB::delete('delete from duplication_profiles where UserId = ?', [$userId]);
 		DB::delete('delete from profiles where UserId = ?', [$userId]);
 		DB::delete('delete from coupons where UserId = ?', [$userId]);
 		DB::delete('delete from billing where UserId = ?', [$userId]);
@@ -80,6 +82,16 @@ class UserInfoController extends Controller
 		DB::delete($query);
 		return;
 	}
+	public static function sortProfiles($email, $strFldName, $sortMethod){
+		$user = DB::select('select Id from users where Email = ?', [$email]);
+		if( count($user) == 0){
+			return [];
+		}
+		$userId = $user[0]->Id;
+		$query = 'select * from profiles where UserId = ' . $userId . ' order by ' . $strFldName . ' ' . $sortMethod;
+		$profiles = DB::select($query);
+		return $profiles;
+	}
 	public static function getProfileSearch($email, $searchOption){
 		$user = DB::select('select Id from users where Email = ?', [$email]);
 		if( count($user) == 0){
@@ -90,8 +102,6 @@ class UserInfoController extends Controller
 		// echo $query;
 		$profiles = DB::select($query);
 		return $profiles;
-		// $profiles = DB::select('select * from profiles where UserId = ? and (Name like "%?%" or LastName like "%?%" or Headline like "%?%" or Location like "%?%" or Url like "%?%" or Email like "%?%" or PhoneNumber like "%?%" or LastJob like "%?%" or Twitter like "%?%" or Site like "%?%" or Tag like "%?%")', [$userId, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption, $searchOption]);
-		// return $profiles;
 	}
 	public static function getProfileData($email){
 		$user = DB::select('select Id from users where Email = ?', [$email]);

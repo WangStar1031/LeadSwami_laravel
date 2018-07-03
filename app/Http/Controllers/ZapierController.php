@@ -26,8 +26,6 @@ class ZapierController extends Controller
 	}
 
 	public static function verifyFromZapier(Request $request){
-		// var_dump($request);
-		// exit();
 		$client_ID = $request->input('client_id');
 		$redirect_uri = $request->input('redirect_uri');
 		$state = $request->input('state');
@@ -67,4 +65,5 @@ class ZapierController extends Controller
 		if( strcmp($user[0]->Password, $password) == 0)
 			return $user[0]->Id;
 		return 0;
-	}}
+	}
+}
