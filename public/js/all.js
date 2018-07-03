@@ -157,6 +157,8 @@ function btnDeleteClicked(){
 			arrSelEmails.push( arrTrs.eq(i).find('.proId').html());
 		}
 	}
+	if( arrSelEmails.length == 0)
+		return;
 	$("#proIDs").val(arrSelEmails.join(","));
 	$("#proForm").submit();
 }
