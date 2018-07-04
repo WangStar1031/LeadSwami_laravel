@@ -24,4 +24,10 @@
 	.selectedOption{
 		background-color: $sideSelBack;
 	}
+	.subMenuOption a{
+		color: gray !important;
+	}
+	.HideItem{
+		display: none;
+	}
 }

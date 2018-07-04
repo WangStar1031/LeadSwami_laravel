@@ -184,3 +184,10 @@ $(document).ready(function(){
 	$(":input[data-inputmask-mask]").inputmask();
 	$(":input[data-inputmask-alias]").inputmask();
 });
+
+function sideSettingClicked(){
+	if(!$(".settingMenu").hasClass("subMenuOption")){
+		$(".settingMenu").addClass("subMenuOption");
+		$(".subMenu").removeClass("HideItem");
+	}
+}

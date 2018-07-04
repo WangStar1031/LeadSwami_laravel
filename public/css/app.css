@@ -8737,6 +8737,14 @@ body {
   background-color: #5f9eff;
 }
 
+.sideBar .subMenuOption a {
+  color: gray !important;
+}
+
+.sideBar .HideItem {
+  display: none;
+}
+
 .subContents {
   position: absolute;
   top: 80px;
