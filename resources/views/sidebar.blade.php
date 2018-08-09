@@ -2,7 +2,7 @@
 	<div class="sideOptions">
 		<div class="sideOption @php echo $active == 'profiles' ? 'selectedOption' : '' @endphp">
 			<a href="/profiles">
-				<img src="img/side_profile.png">
+				<p><img src="img/side_profile.png"></p>
 				<p>Profiles</p>
 			</a>
 		</div>
@@ -29,7 +29,7 @@
 		<div class="sideOption subMenu @php echo $active == 'profiles' ? 'HideItem' : '';@endphp @php echo $active == 'subscription' ? 'selectedOption' : '';@endphp">
 			<a href="/subscription">
 				<!-- <p><span><i class="fa fa-credit-card"></i></span></p> -->
-				<img src="img/side_subscription.png">
+				<p><img src="img/side_subscription.png"></p>
 				<p>Subscription</p>
 			</a>
 		</div>

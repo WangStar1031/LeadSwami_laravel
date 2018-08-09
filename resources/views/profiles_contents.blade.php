@@ -13,22 +13,24 @@
 	array_push($arrHeader, "Tag");
 @endphp
 <div class="profileContents">
-	<h2>Profile</h2>
-	<form method="post" id="proForm">
+	<h3>Profile</h3>
+	<form method="post" id="proForm" class="row">
 		{{ csrf_field() }}
 		<div class="col-xs-12" style="border: 1px solid #ddd; padding: 5px;">
-			<div class="col-xs-12 col-md-8 col-lg-9">
-				<input type="checkbox" name="allCheck" onchange="allCheckClicked()" id="allChk">
-				<div class="btn" style="border: 1px solid #ddd;" onclick="btnDeleteClicked()"><i class="fa fa-trash-o"></i></div>
-			</div>
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="input-group custom-search-form" style="border: 1px solid #ddd;">
-					<input type="text" class="form-control" name="proSearch" placeholder="Search..." id="proSearch" style="border: none;">
-					<span class="input-group-btn" onclick="btnSearchClicked()">
-						<div class="btn btn-default-sm" style="border: 1px solid #ddd;">
-							<i class="fa fa-search"></i>
-						</div>
-					</span>
+			<div class="row">
+				<div class="col-xs-12 col-md-8 col-lg-9">
+					<input type="checkbox" name="allCheck" onchange="allCheckClicked()" id="allChk">
+					<div class="btn" style="border: 1px solid #ddd;" onclick="btnDeleteClicked()"><i class="fa fa-trash-o"></i></div>
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-3">
+					<div class="input-group custom-search-form" style="border: 1px solid #ddd;">
+						<input type="text" class="form-control" name="proSearch" placeholder="Search..." id="proSearch" style="border: none;">
+						<span class="input-group-btn" onclick="btnSearchClicked()">
+							<div class="btn btn-default-sm" style="border: 1px solid #ddd;">
+								<i class="fa fa-search"></i>
+							</div>
+						</span>
+					</div>
 				</div>
 			</div>
 			<input type="text" name="proIDs" style="display: none;" id="proIDs">

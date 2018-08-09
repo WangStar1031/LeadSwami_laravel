@@ -7,12 +7,13 @@
 
         <title>LeadSwami</title>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- icon -->
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class="WelcomeContents">
         <div class="flex-center position-ref full-height">
             <div class="content LeftContent">
                 <div class="m-b-md centerContent">
@@ -23,7 +24,7 @@
                     @php
                     echo App\Http\Controllers\WelcomeController::getLoginUrl();
                     @endphp
-                    " class="BtnLogin"><strong>in</strong> LOGIN WITH LINKEDIN</a>
+                    " class="BtnLogin" onclick="BtnLoginClicked()"><strong>in</strong> LOGIN WITH LINKEDIN</a>
                 </div>
             </div>
             <div class="content rightContent">
@@ -33,5 +34,7 @@
             </div>
             </div>
         </div>
+        <div class="loader" style="display: none;">Loading...</div>
     </body>
+<script src="js/all.js"></script>
 </html>

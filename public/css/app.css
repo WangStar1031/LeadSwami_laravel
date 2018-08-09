@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+body {
+  background-color: white !important;
+}
+
+.hoverBtn:hover {
+  opacity: 0.8;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8350,7 +8358,172 @@ button.close {
   }
 }
 
+.WelcomeContents {
+  background-color: white;
+  color: #636b6f;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+}
+
+.WelcomeContents .full-height {
+  height: 100vh;
+}
+
+.WelcomeContents .flex-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.WelcomeContents .position-ref {
+  position: relative;
+}
+
+.WelcomeContents .top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.WelcomeContents .content {
+  text-align: center;
+  width: 350px;
+  height: 600px;
+}
+
+.WelcomeContents .title {
+  font-size: 84px;
+}
+
+.WelcomeContents .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.WelcomeContents .m-b-md {
+  margin-bottom: 30px;
+}
+
+.WelcomeContents .BtnLogin {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #147ab6;
+  text-decoration: none;
+  color: white;
+}
+
+.WelcomeContents .BtnLogin:hover {
+  opacity: 0.8;
+}
+
+.WelcomeContents .LeftContent {
+  padding-top: 0px;
+}
+
+.WelcomeContents .rightContent {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f98949), to(#fbe080));
+  background: linear-gradient(#f98949, #fbe080);
+}
+
+.WelcomeContents .LeftContent,
+.WelcomeContents .rightContent {
+  width: 50%;
+  height: 100%;
+}
+
+.WelcomeContents .centerContent {
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  margin: auto;
+  width: 50%;
+}
+
+.WelcomeContents .space {
+  height: 30px;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  color: black;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 3.5em;
+}
+
+@-webkit-keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+@keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
 .accContents {
+  background-color: white;
   position: absolute;
   top: 80px;
   margin-left: 100px;
@@ -8381,7 +8554,6 @@ button.close {
   border: none;
   border-bottom: 1px solid #989898;
   width: 80%;
-  padding-left: 10px;
 }
 
 .accContents input[type='submit'] {
@@ -8438,6 +8610,10 @@ button.close {
 body {
   margin: 0px;
   background-color: #f0f0f0;
+}
+
+.authZapier {
+  background-color: white;
 }
 
 .authZapier .topArea {
@@ -8536,6 +8712,7 @@ body {
 }
 
 .payContents {
+  background-color: white;
   position: absolute;
   top: 80px;
   margin-left: 100px;
@@ -8569,7 +8746,6 @@ body {
   border: none;
   border-bottom: 1px solid #989898;
   width: 100%;
-  padding-left: 10px;
 }
 
 .payContents input[type='submit'],
@@ -8593,7 +8769,6 @@ body {
 
 .payContents .promoCode,
 .payContents .billHistory {
-  border-top: 1px solid #989898;
   margin-top: 30px;
   color: #989898;
 }
@@ -8651,7 +8826,26 @@ body {
   background-color: #bec3c7 !important;
 }
 
+.payContents .billTable thead {
+  background-color: #f4f8fb;
+  color: #8594a9;
+}
+
+.payContents .billTable tr {
+  border-bottom: 1px solid #e5e8ed;
+}
+
+.payContents .billTable {
+  color: black;
+  font-weight: bolder;
+}
+
+.payContents .billTable td {
+  padding: 3px 10px;
+}
+
 .profileContents {
+  background-color: white;
   position: absolute;
   top: 80px;
   left: 100px;
@@ -8719,6 +8913,10 @@ body {
   text-align: center;
 }
 
+.sideBar .sideOption:hover {
+  opacity: 0.8;
+}
+
 .sideBar .sideOptions a {
   text-decoration: none;
   color: white;
@@ -8746,6 +8944,7 @@ body {
 }
 
 .subContents {
+  background-color: white;
   position: absolute;
   top: 80px;
   margin-left: 100px;
@@ -8853,6 +9052,11 @@ body {
   padding-top: 20px;
 }
 
+.subContents .error_msg {
+  text-align: center;
+  color: red;
+}
+
 .switch {
   opacity: 0;
   position: absolute;
@@ -8955,6 +9159,7 @@ body {
   border-bottom: 1px solid #989898;
   width: 100%;
   z-index: 100;
+  background-color: white;
 }
 
 .topBar a {
@@ -8990,8 +9195,7 @@ body {
   /*top: -10px;*/
 }
 
-html,
-body {
+.WelcomeContents {
   background-color: white;
   color: #636b6f;
   font-family: 'Raleway', sans-serif;
@@ -9000,11 +9204,11 @@ body {
   margin: 0;
 }
 
-.full-height {
+.WelcomeContents .full-height {
   height: 100vh;
 }
 
-.flex-center {
+.WelcomeContents .flex-center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -9016,27 +9220,27 @@ body {
           justify-content: center;
 }
 
-.position-ref {
+.WelcomeContents .position-ref {
   position: relative;
 }
 
-.top-right {
+.WelcomeContents .top-right {
   position: absolute;
   right: 10px;
   top: 18px;
 }
 
-.content {
+.WelcomeContents .content {
   text-align: center;
   width: 350px;
   height: 600px;
 }
 
-.title {
+.WelcomeContents .title {
   font-size: 84px;
 }
 
-.links > a {
+.WelcomeContents .links > a {
   color: #636b6f;
   padding: 0 25px;
   font-size: 12px;
@@ -9046,11 +9250,11 @@ body {
   text-transform: uppercase;
 }
 
-.m-b-md {
+.WelcomeContents .m-b-md {
   margin-bottom: 30px;
 }
 
-.BtnLogin {
+.WelcomeContents .BtnLogin {
   padding: 10px;
   border-radius: 5px;
   background-color: #147ab6;
@@ -9058,22 +9262,26 @@ body {
   color: white;
 }
 
-.LeftContent {
+.WelcomeContents .BtnLogin:hover {
+  opacity: 0.8;
+}
+
+.WelcomeContents .LeftContent {
   padding-top: 0px;
 }
 
-.rightContent {
+.WelcomeContents .rightContent {
   background: -webkit-gradient(linear, left top, left bottom, from(#f98949), to(#fbe080));
   background: linear-gradient(#f98949, #fbe080);
 }
 
-.LeftContent,
-.rightContent {
+.WelcomeContents .LeftContent,
+.WelcomeContents .rightContent {
   width: 50%;
   height: 100%;
 }
 
-.centerContent {
+.WelcomeContents .centerContent {
   top: 50%;
   position: absolute;
   -webkit-transform: translateY(-50%);
@@ -9082,7 +9290,72 @@ body {
   width: 50%;
 }
 
-.space {
+.WelcomeContents .space {
   height: 30px;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  color: black;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 3.5em;
+}
+
+@-webkit-keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+@keyframes load7 {
+  0%, 80%, 100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
 }
 

@@ -21,7 +21,13 @@
 	@include('sidebar', ['active' => 'subscription', 'email'=>$email])
 	@include('subscription_contents',['email'=>$email, 'isActive'=>$isActive, 'cardNumber'=>$cardNumber, 'errMsg'=>$errMsg])
 </body>
+<script type="text/javascript">
+    
+var stripeCode = '{{ env('STRIPE_KEY') }}';
+
+</script>
     <script src="js/jquery.min.js"></script>
-<script src='js/jquery.inputmask.bundle.js'></script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src='js/jquery.inputmask.bundle.js'></script>
     <script src="js/all.js"></script>
 </html>

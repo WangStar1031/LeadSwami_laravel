@@ -17,14 +17,14 @@ class CreateUsersTable extends Migration
             $table->increments('Id');
             $table->string('Name');
             $table->string('SurName');
-            $table->string('Email')->unique();
+            $table->string('Email');
             $table->string('Password');
             $table->string('AccessTocken');
             $table->string('Industry');
             $table->string('Headline');
             $table->string('Location');
             $table->string('ProfilePicUrl');
-            $table->string('PublicUri');
+            $table->string('PublicUrl');
             $table->string('ConnectionCount');
             $table->string('Position');
             $table->timestamps();

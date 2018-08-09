@@ -21,7 +21,7 @@ class CreateDuplicationProfilesTable extends Migration
             $table->string('Headline');
             $table->string('Location');
             $table->string('Url');
-            $table->string('Email')->unique();
+            $table->string('Email');
             $table->string('ImgUrl');
             $table->string('PhoneNumber');
             $table->string('LastJob');

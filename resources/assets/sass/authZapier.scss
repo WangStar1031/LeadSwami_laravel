@@ -1,5 +1,6 @@
 body{ margin: 0px; background-color: $zapMainCol; }
 .authZapier{
+        background-color: white;
         .topArea{ width: 150px; margin: auto; margin-top: 20px; margin-bottom: 5px; border-radius: 10px; height: 12px; background-color: $zapMainCol; border: 1px solid $grayBorder;}
         .contents{ text-align: center; width: 500px; margin: auto; margin-top: 30px; border-radius: 10px; background-color: white; color: gray;box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.16);}
         .Imgs  img{ width: 100px; border-radius: 100%;}

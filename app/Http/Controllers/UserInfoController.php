@@ -167,7 +167,7 @@ class UserInfoController extends Controller
 			$retObj->State = "";
 			$retObj->StripeCardNumber = "";
 			$retObj->ExpirationDate = "";
-			$retObj->PromoCode = "";
+			$retObj->StripeToken = "";
 			return $retObj;
 		}
 		return $billData[0];

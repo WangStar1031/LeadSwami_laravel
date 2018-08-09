@@ -24,7 +24,7 @@ class CreateBillingTable extends Migration
             $table->string('State');
             $table->string('StripeCardNumber');
             $table->date('ExpirationDate');
-            $table->string('PromoCode');
+            $table->string('StripeToken');
             $table->timestamps();
         });
     }
